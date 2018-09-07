@@ -1,40 +1,41 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-prenoms
-=======
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# prenoms
 
 The goal of prenoms is to ...
 
-Installation
-------------
+## Installation
 
 You can install prenoms from github with:
 
-``` r
+```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("desautm/prenoms")
 ```
 
-Example
--------
+## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-``` r
+```{r library}
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(ggplot2)
 library(prenoms)
 ```
 
-``` r
+```{r example}
 famille <- prenoms %>%
   filter(
     prenom == "Marc-Andre" & sexe == "M" |
@@ -51,4 +52,3 @@ ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
 
-![](README-example-1.png)
