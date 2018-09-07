@@ -1,0 +1,13 @@
+Package: prenoms
+Title: Liste Prenoms Masculins et Feminins au Quebec de 1980 a 2017
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Marc-Andre",
+           family = "Desautels",
+           role = c("aut", "cre"),
+           email = "marc-andre.desautels@cstjean.qc.ca")
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
