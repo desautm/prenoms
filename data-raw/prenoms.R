@@ -4,12 +4,12 @@ library(stringr)
 library(tidyr)
 library(devtools)
 
-gars <- read_csv("data-raw/gars1980-2017.csv")
-filles <- read_csv("data-raw/filles1980-2017.csv")
+gars <- read_csv("data-raw/gars1980-2017.csv", na = c("", "NA", 0))
+filles <- read_csv("data-raw/filles1980-2017.csv", na = c("", "NA", 0))
 
-prenoms_gars <- gather(gars, key = annee, value = n, -Prenom) %>%
+prenoms_gars <- gather(gars, key = annee, value = n, -Prenom, na.rm = TRUE) %>%
   mutate(sexe = "M")
-prenoms_filles <- gather(filles, key = annee, value = n, -Prenom) %>%
+prenoms_filles <- gather(filles, key = annee, value = n, -Prenom, na.rm = TRUE) %>%
   mutate(sexe = "F")
 
 prenoms <- bind_rows(prenoms_gars, prenoms_filles) %>%
@@ -26,4 +26,4 @@ prenoms <- bind_rows(prenoms_gars, prenoms_filles) %>%
   ungroup() %>%
   arrange(annee, sexe, prenom)
 
-use_data(prenoms, overwrite = TRUE, compress = "xz")
+use_data(prenoms, overwrite = TRUE)

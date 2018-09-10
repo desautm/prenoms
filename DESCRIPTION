@@ -8,10 +8,12 @@ Authors@R:
            email = "marc-andre.desautels@cstjean.qc.ca")
 Description: Cette librairie contient une base de donnes contenant les
   prenoms des enfants du Quebec entre 1980 et 2017.
+Depends: 
+  R (>= 2.10)
+Imports:
+  tibble
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
-Depends: R (>= 2.10)
-Imports:
-  tibble
+

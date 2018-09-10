@@ -11,6 +11,7 @@
 #'   \item{n}{Frequence}
 #'   \item{prop}{Proportion}
 #' }
+#' @importFrom tibble tibble
 #' @source \url{https://www.donneesquebec.ca/recherche/fr/dataset/banque-de-prenoms-garcons}
 #' @source \url{https://www.donneesquebec.ca/recherche/fr/dataset/banque-de-prenoms-filles}
 "prenoms"
