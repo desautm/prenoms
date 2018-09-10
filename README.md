@@ -1,12 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-prenoms
-=======
 
-Le but de prenoms est de donner les prénoms des enfants du Québec de 1980 à 2017.
+[![Travis-CI Build
+Status](https://travis-ci.org/desautm/prenoms.svg?branch=master)](https://travis-ci.org/desautm/prenoms)
 
-Installation
-------------
+# prenoms
+
+Le but de prenoms est de donner les prénoms des enfants du Québec de
+1980 à 2017.
+
+## Installation
 
 Vous pouvez installer prenoms à partir de github avec:
 
@@ -15,10 +18,10 @@ Vous pouvez installer prenoms à partir de github avec:
 devtools::install_github("desautm/prenoms")
 ```
 
-Exemple
--------
+## Exemple
 
-This is a basic example which shows you how to solve a common problem:
+Voici la répartition des quatre prénoms des membres de ma famille de
+1980 à 2017.
 
 ``` r
 library(dplyr)
