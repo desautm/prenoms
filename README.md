@@ -3,19 +3,19 @@
 prenoms
 =======
 
-The goal of prenoms is to ...
+Le but de prenoms est de donner les prénoms des enfants du Québec de 1980 à 2017.
 
 Installation
 ------------
 
-You can install prenoms from github with:
+Vous pouvez installer prenoms à partir de github avec:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("desautm/prenoms")
 ```
 
-Example
+Exemple
 -------
 
 This is a basic example which shows you how to solve a common problem:
@@ -51,4 +51,4 @@ ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
 
-![](README-example-1.png)
+<img src="README-example-1.png" width="100%" />
