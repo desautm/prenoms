@@ -26,4 +26,4 @@ prenoms <- bind_rows(prenoms_gars, prenoms_filles) %>%
   ungroup() %>%
   arrange(annee, sexe, prenom)
 
-use_data(prenoms, overwrite = TRUE)
+use_data(prenoms, overwrite = TRUE, compress = "xz")
