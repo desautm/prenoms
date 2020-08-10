@@ -3,7 +3,7 @@
 #' Une base de donnes contenant les prenoms des enfants du Quebec
 #' entre 1980 et 2017.
 #'
-#' @format Une base de donnees contenant 13 511 308 lignes et 5 colonnes:
+#' @format Une base de donnees contenant 690 105 lignes et 5 colonnes:
 #' \describe{
 #'   \item{annee}{Annee}
 #'   \item{sexe}{F pour feminin et M pour masculin}
