@@ -4,8 +4,8 @@ library(stringr)
 library(tidyr)
 library(devtools)
 
-gars <- read_csv("data-raw/gars1980-2017.csv", na = c("", "NA", 0))
-filles <- read_csv("data-raw/filles1980-2017.csv", na = c("", "NA", 0))
+gars <- read_csv("data-raw/gars1980-2019.csv", na = c("", "NA", 0), skip = 5)
+filles <- read_csv("data-raw/filles1980-2019.csv", na = c("", "NA", 0), skip = 5)
 
 prenoms_gars <- gather(gars, key = annee, value = n, -Prenom, na.rm = TRUE) %>%
   mutate(sexe = "M")

@@ -47,7 +47,9 @@ famille <- prenoms %>%
   ) %>%
   group_by(prenom, annee, sexe) %>%
   summarise(n = sum(n)) %>%
+  ungroup() %>% 
   arrange(annee)
+#> `summarise()` regrouping output by 'prenom', 'annee' (override with `.groups` argument)
 
 ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   geom_line()+
