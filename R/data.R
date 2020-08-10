@@ -1,7 +1,7 @@
-#' Prenoms des bebes du Quebec entre 1980 et 2017
+#' Prenoms des bebes du Quebec entre 1980 et 2019
 #'
 #' Une base de donnes contenant les prenoms des enfants du Quebec
-#' entre 1980 et 2017.
+#' entre 1980 et 2019.
 #'
 #' @format Une base de donnees contenant 690 105 lignes et 5 colonnes:
 #' \describe{

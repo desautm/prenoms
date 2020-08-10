@@ -7,7 +7,7 @@ Status](https://travis-ci.org/desautm/prenoms.svg?branch=master)](https://travis
 # prenoms
 
 Le but de prenoms est de donner les prénoms des enfants du Québec de
-1980 à 2017.
+1980 à 2019.
 
 ## Installation
 
@@ -21,7 +21,7 @@ devtools::install_github("desautm/prenoms")
 ## Exemple
 
 Voici la répartition des quatre prénoms des membres de ma famille de
-1980 à 2017.
+1980 à 2019.
 
 ``` r
 library(dplyr)
@@ -48,10 +48,11 @@ famille <- prenoms %>%
   group_by(prenom, annee, sexe) %>%
   summarise(n = sum(n)) %>%
   arrange(annee)
+#> `summarise()` regrouping output by 'prenom', 'annee' (override with `.groups` argument)
 
 ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   geom_line()+
-  scale_x_continuous( breaks = seq(1980, 2020, by = 5))
+  scale_x_continuous( breaks = seq(1980, 2025, by = 5))
 ```
 
 <img src="README-example-1.png" width="100%" />
