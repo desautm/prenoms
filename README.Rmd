@@ -55,12 +55,4 @@ ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
 
-```{r}
-prenoms %>% 
-  filter(annee == 2019) %>% 
-  group_by(prenom, sexe) %>% 
-  summarise(n = sum(n)) %>% 
-  arrange(desc(n)) %>% 
-  head()
-```
 

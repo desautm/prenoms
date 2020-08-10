@@ -10,6 +10,7 @@ filles <- read_csv("data-raw/filles1980-2019.csv", na = c("", "NA", 0), skip = 5
 prenoms_gars <- gars %>%
   select(-Total) %>%
   rename(prenom = `Prénom/Année`) %>%
+  filter(prenom != "Somme:") %>%
   pivot_longer(-prenom, names_to = "annee", values_to = "n") %>%
   mutate(sexe = "M") %>%
   mutate(
@@ -21,6 +22,7 @@ prenoms_gars <- gars %>%
 prenoms_filles <- filles %>%
   select(-Total) %>%
   rename(prenom = `Prénom/Année`) %>%
+  filter(prenom != "Somme:") %>%
   pivot_longer(-prenom, names_to = "annee", values_to = "n") %>%
   mutate(sexe = "F") %>%
   mutate(
