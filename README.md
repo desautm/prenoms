@@ -52,7 +52,20 @@ famille <- prenoms %>%
 
 ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   geom_line()+
-  scale_x_continuous( breaks = seq(1980, 2025, by = 5))
+  scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
 
 <img src="README-example-1.png" width="100%" />
+
+``` r
+prenoms %>% 
+  filter(annee == 2019) %>% 
+  group_by(prenom, sexe) %>% 
+  summarise(n = sum(n)) %>% 
+  arrange(desc(n)) %>% 
+  head()
+#> `summarise()` regrouping output by 'prenom' (override with `.groups` argument)
+#> # A tibble: 0 x 3
+#> # Groups:   prenom [0]
+#> # ... with 3 variables: prenom <chr>, sexe <chr>, n <int>
+```

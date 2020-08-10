@@ -7,23 +7,34 @@ library(devtools)
 gars <- read_csv("data-raw/gars1980-2019.csv", na = c("", "NA", 0), skip = 5)
 filles <- read_csv("data-raw/filles1980-2019.csv", na = c("", "NA", 0), skip = 5)
 
-prenoms_gars <- gather(gars, key = annee, value = n, -Prenom, na.rm = TRUE) %>%
-  mutate(sexe = "M")
-prenoms_filles <- gather(filles, key = annee, value = n, -Prenom, na.rm = TRUE) %>%
-  mutate(sexe = "F")
-
-prenoms <- bind_rows(prenoms_gars, prenoms_filles) %>%
-  filter( !is.na(Prenom), !is.na(annee), !is.na(n), !is.na(sexe)) %>%
-  rename(prenom = Prenom) %>%
+prenoms_gars <- gars %>%
+  select(-Total) %>%
+  rename(prenom = `Prénom/Année`) %>%
+  pivot_longer(-prenom, names_to = "annee", values_to = "n") %>%
+  mutate(sexe = "M") %>%
   mutate(
     prenom = str_to_title(prenom),
     n = as.integer(n),
     annee = as.integer(annee)
-  ) %>%
+  )
+
+prenoms_filles <- filles %>%
+  select(-Total) %>%
+  rename(prenom = `Prénom/Année`) %>%
+  pivot_longer(-prenom, names_to = "annee", values_to = "n") %>%
+  mutate(sexe = "F") %>%
+  mutate(
+    prenom = str_to_title(prenom),
+    n = as.integer(n),
+    annee = as.integer(annee)
+  )
+
+prenoms <-
+  bind_rows(prenoms_gars, prenoms_filles) %>%
+  filter( !is.na(prenom), !is.na(annee), !is.na(n), !is.na(sexe)) %>%
   select(annee, sexe, prenom, n) %>%
   group_by(annee, sexe) %>%
   mutate(prop = n/sum(n)) %>%
-  ungroup() %>%
   arrange(annee, sexe, prenom)
 
 use_data(prenoms, overwrite = TRUE)
