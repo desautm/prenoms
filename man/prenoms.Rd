@@ -3,9 +3,9 @@
 \docType{data}
 \name{prenoms}
 \alias{prenoms}
-\title{Prenoms des bebes du Quebec entre 1980 et 2017}
+\title{Prenoms des bebes du Quebec entre 1980 et 2019}
 \format{
-Une base de donnees contenant 690 105 lignes et 5 colonnes:
+Une base de donnees contenant 744 662 lignes et 5 colonnes:
 \describe{
   \item{annee}{Annee}
   \item{sexe}{F pour feminin et M pour masculin}
@@ -24,7 +24,7 @@ prenoms
 }
 \description{
 Une base de donnes contenant les prenoms des enfants du Quebec
-entre 1980 et 2017.
+entre 1980 et 2019.
 }
 \examples{
 \dontrun{
