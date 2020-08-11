@@ -24,16 +24,15 @@ Voici la répartition des quatre prénoms des membres de ma famille de
 1980 à 2019.
 
 ``` r
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-library(ggplot2)
+library(tidyverse)
+#> -- Attaching packages -------------------------------------------------------------------------------- tidyverse 1.3.0 --
+#> v ggplot2 3.3.2     v purrr   0.3.4
+#> v tibble  3.0.3     v dplyr   1.0.1
+#> v tidyr   1.1.1     v stringr 1.4.0
+#> v readr   1.3.1     v forcats 0.5.0
+#> -- Conflicts ----------------------------------------------------------------------------------- tidyverse_conflicts() --
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
 library(prenoms)
 ```
 
@@ -62,13 +61,18 @@ ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
 Les 5 prénoms féminins les plus populaires en 2019.
 
 ``` r
-library(dplyr)
-
 prenoms %>%
   filter(annee == 2019 & sexe == "F") %>%
   select(annee, sexe, prenom, n) %>%
   arrange(desc(n)) %>%
   head(5)
-#> # A tibble: 0 x 4
-#> # ... with 4 variables: annee <int>, sexe <chr>, prenom <chr>, n <int>
+#> # A tibble: 5 x 4
+#> # Groups:   annee, sexe [1]
+#>   annee sexe  prenom        n
+#>   <int> <chr> <chr>     <int>
+#> 1  2019 F     Olivia      549
+#> 2  2019 F     Emma        517
+#> 3  2019 F     Alice       513
+#> 4  2019 F     Charlie     499
+#> 5  2019 F     Charlotte   497
 ```
