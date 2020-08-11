@@ -28,17 +28,16 @@ Vous pouvez installer prenoms à partir de github avec:
 devtools::install_github("desautm/prenoms")
 ```
 
-## Exemple
+## Exemple 1
 
 Voici la répartition des quatre prénoms des membres de ma famille de 1980 à 2019.
 
 ```{r library}
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(prenoms)
 ```
 
-```{r example}
+```{r example1}
 famille <- prenoms %>%
   filter(
     prenom == "Marc-Andre" & sexe == "M" |
@@ -54,5 +53,19 @@ ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
   geom_line()+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
+
+## Exemple 2
+
+Les 5 prénoms féminins les plus populaires en 2019.
+
+```{r example2}
+prenoms %>%
+  filter(annee == 2019 & sexe == "F") %>%
+  select(annee, sexe, prenom, n) %>%
+  arrange(desc(n)) %>%
+  head(5)
+```
+
+
 
 

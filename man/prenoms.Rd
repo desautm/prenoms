@@ -15,9 +15,9 @@ Une base de donnees contenant 744 662 lignes et 5 colonnes:
 }
 }
 \source{
-\url{https://www.donneesquebec.ca/recherche/fr/dataset/banque-de-prenoms-garcons}
+\url{https://www.donneesquebec.ca/recherche/dataset/bec46ea8-7bd1-4d81-b9e0-ea9f3ba0c59d/resource/6bf4d1ee-64b8-4e5b-9ecb-29f329695c46/download/gars1980-2019.csv}
 
-\url{https://www.donneesquebec.ca/recherche/fr/dataset/banque-de-prenoms-filles}
+\url{https://www.donneesquebec.ca/recherche/fr/dataset/13db2583-427a-4e5f-b679-8532d3df571f/resource/17db81e0-27f6-407e-a436-d22b698221a6/download/filles1980-2019.csv}
 }
 \usage{
 prenoms
@@ -48,6 +48,17 @@ entre 1980 et 2019.
   ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
     geom_line()+
     scale_x_continuous( breaks = seq(1980, 2020, by = 5))
+}
+
+\dontrun{
+  library(dplyr)
+
+  # Les 5 prenoms feminins les plus populaires en 2019
+  prenoms \%>\%
+    filter(annee == 2019 & sexe == "F") \%>\%
+    select(annee, sexe, prenom, n) \%>\%
+    arrange(desc(n)) \%>\%
+    head(5)
 }
 }
 \keyword{datasets}
