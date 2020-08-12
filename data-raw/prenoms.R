@@ -35,8 +35,8 @@ prenoms <-
   bind_rows(prenoms_gars, prenoms_filles) %>%
   filter( !is.na(prenom), !is.na(annee), !is.na(n), !is.na(sexe)) %>%
   select(annee, sexe, prenom, n) %>%
-  group_by(annee, sexe) %>%
-  mutate(prop = n/sum(n)) %>%
+  # group_by(annee, sexe) %>%
+  # mutate(prop = n/sum(n)) %>%
   arrange(annee, sexe, prenom)
 
 use_data(prenoms, overwrite = TRUE)

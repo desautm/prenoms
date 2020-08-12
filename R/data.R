@@ -9,7 +9,6 @@
 #'   \item{sexe}{F pour feminin et M pour masculin}
 #'   \item{prenom}{Prenom}
 #'   \item{n}{Frequence}
-#'   \item{prop}{Proportion}
 #' }
 #' @importFrom tibble tibble
 #' @source \url{https://www.donneesquebec.ca/recherche/dataset/bec46ea8-7bd1-4d81-b9e0-ea9f3ba0c59d/resource/6bf4d1ee-64b8-4e5b-9ecb-29f329695c46/download/gars1980-2019.csv}

@@ -11,7 +11,6 @@ Une base de donnees contenant 744 662 lignes et 5 colonnes:
   \item{sexe}{F pour feminin et M pour masculin}
   \item{prenom}{Prenom}
   \item{n}{Frequence}
-  \item{prop}{Proportion}
 }
 }
 \source{
