@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 # prenoms
 
-Le but de prenoms est de donner les prénoms des enfants du Québec de 1980 à 2019.
+Le but de prenoms est de donner les prénoms des enfants du Québec de 1980 à 2020.
 
 ## Installation
 
@@ -30,7 +30,7 @@ devtools::install_github("desautm/prenoms")
 
 ## Exemple 1
 
-Voici la répartition des quatre prénoms des membres de ma famille de 1980 à 2019.
+Voici la répartition des quatre prénoms des membres de ma famille de 1980 à 2020.
 
 ```{r library}
 library(tidyverse)
@@ -56,16 +56,24 @@ ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
 
 ## Exemple 2
 
-Les 5 prénoms féminins les plus populaires en 2019.
+Les 5 prénoms féminins les plus populaires en 2020.
 
 ```{r example2}
 prenoms %>%
-  filter(annee == 2019 & sexe == "F") %>%
+  filter(annee == 2020 & sexe == "F") %>%
   select(annee, sexe, prenom, n) %>%
   arrange(desc(n)) %>%
   head(5)
 ```
 
+## Exemple 3
 
+Les 5 prénoms masculins les plus populaires en 2020.
 
-
+```{r example2}
+prenoms %>%
+  filter(annee == 2020 & sexe == "M") %>%
+  select(annee, sexe, prenom, n) %>%
+  arrange(desc(n)) %>%
+  head(5)
+```
