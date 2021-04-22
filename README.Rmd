@@ -70,7 +70,11 @@ prenoms %>%
 
 Les 5 prénoms masculins les plus populaires en 2020.
 
+<<<<<<< HEAD
 ```{r example3}
+=======
+```{r example2}
+>>>>>>> master
 prenoms %>%
   filter(annee == 2020 & sexe == "M") %>%
   select(annee, sexe, prenom, n) %>%
