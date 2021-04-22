@@ -17,20 +17,20 @@ knitr::opts_chunk$set(
 
 # prenoms
 
-Le but de prenoms est de donner les prénoms des enfants du Québec de 1980 à 2020.
+The goal of `prenoms` is to give the names of babies born in Quebec between 1980 and 2020.
 
 ## Installation
 
-Vous pouvez installer prenoms à partir de github avec:
+You can install `prenoms` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("desautm/prenoms")
 ```
 
-## Exemple 1
+## Example 1
 
-Voici la répartition des quatre prénoms des membres de ma famille de 1980 à 2020.
+Here is the graph of the first names of the four members of my family, between 1980 and 2020.
 
 ```{r library}
 library(tidyverse)
@@ -38,46 +38,42 @@ library(prenoms)
 ```
 
 ```{r example1}
-famille <- prenoms %>%
+family <- prenoms %>%
   filter(
-    prenom == "Marc-Andre" & sexe == "M" |
-    prenom == "Laurent" & sexe == "M" |
-    prenom == "Melanie" & sexe == "F" |
-    prenom == "Anna" & sexe == "F"
+    name == "Marc-Andre" & sex == "M" |
+    name == "Laurent" & sex == "M" |
+    name == "Melanie" & sex == "F" |
+    name == "Anna" & sex == "F"
   ) %>%
-  group_by(prenom, annee, sexe) %>%
+  group_by(name, year, sex) %>%
   summarise(n = sum(n)) %>%
-  arrange(annee)
+  arrange(year)
 
-ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
+ggplot(data = family, aes(x = year, y = n, color = name))+
   geom_line()+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
 
-## Exemple 2
+## Example 2
 
-Les 5 prénoms féminins les plus populaires en 2020.
+The five most popular female names in 2020.
 
 ```{r example2}
 prenoms %>%
-  filter(annee == 2020 & sexe == "F") %>%
-  select(annee, sexe, prenom, n) %>%
+  filter(year == 2020 & sex == "F") %>%
+  select(year, sex, name, n) %>%
   arrange(desc(n)) %>%
   head(5)
 ```
 
-## Exemple 3
+## Example 3
 
-Les 5 prénoms masculins les plus populaires en 2020.
+The five most popular male names in 2020.
 
-<<<<<<< HEAD
 ```{r example3}
-=======
-```{r example2}
->>>>>>> master
 prenoms %>%
-  filter(annee == 2020 & sexe == "M") %>%
-  select(annee, sexe, prenom, n) %>%
+  filter(year == 2020 & sex == "M") %>%
+  select(year, sex, name, n) %>%
   arrange(desc(n)) %>%
   head(5)
 ```

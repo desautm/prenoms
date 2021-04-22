@@ -1,13 +1,14 @@
 Package: prenoms
-Title: Prenoms Donnes Aux Bebes du Quebec entre 1980 et 2020
-Version: 0.0.0.9000
+Title: Names Given to Babies in Quebec Between 1980 and 2020
+Version: 0.0.9000
+Language: en-US
 Authors@R:
     person(given = "Marc-Andre",
            family = "Desautels",
            role = c("aut", "cre"),
            email = "marc-andre.desautels@cstjean.qc.ca")
-Description: Cette librairie contient une base de donnes contenant les
-  prenoms des enfants du Quebec entre 1980 et 2020.
+Description: This library contains a database containing the names 
+  of the babies born in Quebec between 1980 and 2020.
 Depends: 
   R (>= 2.10)
 Imports:

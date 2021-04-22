@@ -6,22 +6,22 @@ Status](https://travis-ci.org/desautm/prenoms.svg?branch=master)](https://travis
 
 # prenoms
 
-Le but de prenoms est de donner les prénoms des enfants du Québec de
-1980 à 2020.
+The goal of `prenoms` is to give the names of babies born in Quebec
+between 1980 and 2020.
 
 ## Installation
 
-Vous pouvez installer prenoms à partir de github avec:
+You can install `prenoms` from github with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("desautm/prenoms")
 ```
 
-## Exemple 1
+## Example 1
 
-Voici la répartition des quatre prénoms des membres de ma famille de
-1980 à 2020.
+Here is the graph of the first names of the four members of my family,
+between 1980 and 2020.
 
 ``` r
 library(tidyverse)
@@ -37,37 +37,37 @@ library(prenoms)
 ```
 
 ``` r
-famille <- prenoms %>%
+family <- prenoms %>%
   filter(
-    prenom == "Marc-Andre" & sexe == "M" |
-    prenom == "Laurent" & sexe == "M" |
-    prenom == "Melanie" & sexe == "F" |
-    prenom == "Anna" & sexe == "F"
+    name == "Marc-Andre" & sex == "M" |
+    name == "Laurent" & sex == "M" |
+    name == "Melanie" & sex == "F" |
+    name == "Anna" & sex == "F"
   ) %>%
-  group_by(prenom, annee, sexe) %>%
+  group_by(name, year, sex) %>%
   summarise(n = sum(n)) %>%
-  arrange(annee)
-#> `summarise()` has grouped output by 'prenom', 'annee'. You can override using the `.groups` argument.
+  arrange(year)
+#> `summarise()` has grouped output by 'name', 'year'. You can override using the `.groups` argument.
 
-ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
+ggplot(data = family, aes(x = year, y = n, color = name))+
   geom_line()+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 ```
 
 <img src="README-example1-1.png" width="100%" />
 
-## Exemple 2
+## Example 2
 
-Les 5 prénoms féminins les plus populaires en 2020.
+The five most popular female names in 2020.
 
 ``` r
 prenoms %>%
-  filter(annee == 2020 & sexe == "F") %>%
-  select(annee, sexe, prenom, n) %>%
+  filter(year == 2020 & sex == "F") %>%
+  select(year, sex, name, n) %>%
   arrange(desc(n)) %>%
   head(5)
 #> # A tibble: 5 x 4
-#>   annee sexe  prenom        n
+#>    year sex   name          n
 #>   <int> <chr> <chr>     <int>
 #> 1  2020 F     Olivia      543
 #> 2  2020 F     Alice       491
@@ -76,18 +76,18 @@ prenoms %>%
 #> 5  2020 F     Charlotte   449
 ```
 
-## Exemple 3
+## Example 3
 
-Les 5 prénoms masculins les plus populaires en 2020.
+The five most popular male names in 2020.
 
 ``` r
 prenoms %>%
-  filter(annee == 2020 & sexe == "M") %>%
-  select(annee, sexe, prenom, n) %>%
+  filter(year == 2020 & sex == "M") %>%
+  select(year, sex, name, n) %>%
   arrange(desc(n)) %>%
   head(5)
 #> # A tibble: 5 x 4
-#>   annee sexe  prenom      n
+#>    year sex   name        n
 #>   <int> <chr> <chr>   <int>
 #> 1  2020 M     Liam      661
 #> 2  2020 M     William   644

@@ -3,14 +3,14 @@
 \docType{data}
 \name{prenoms}
 \alias{prenoms}
-\title{Prenoms des bebes du Quebec entre 1980 et 2020}
+\title{Names of babies in Quebec Between 1980 and 2020}
 \format{
-Une base de donnees contenant 769 890 lignes et 4 colonnes:
+A database containing  769 890 lines and 4 columns:
 \describe{
-  \item{annee}{Annee}
-  \item{sexe}{F pour feminin et M pour masculin}
-  \item{prenom}{Prenom}
-  \item{n}{Frequence}
+  \item{year}{Year}
+  \item{sex}{F for female and M for male}
+  \item{name}{Name}
+  \item{n}{Frequency}
 }
 }
 \source{
@@ -22,8 +22,8 @@ Une base de donnees contenant 769 890 lignes et 4 colonnes:
 prenoms
 }
 \description{
-Une base de donnes contenant les prenoms des enfants du Quebec
-entre 1980 et 2020.
+A database containing the first names of babies born in Quebec
+between 1980 and 2020
 }
 \examples{
 \dontrun{
@@ -32,21 +32,20 @@ entre 1980 et 2020.
   library(prenoms)
 
   # Prenoms des membres de ma famille
-  famille <- prenoms \%>\%
-    filter(
-      prenom == "Marc-Andre" & sexe == "M" |
-      prenom == "Laurent" & sexe == "M" |
-      prenom == "Melanie" & sexe == "F" |
-      prenom == "Anna" & sexe == "F"
-    ) \%>\%
-    group_by(prenom, annee, sexe) \%>\%
-    summarise(n = sum(n)) \%>\%
-    arrange(annee)
+  family <- prenoms \%>\%
+  filter(
+  name == "Marc-Andre" & sex == "M" |
+  name == "Laurent" & sex == "M" |
+  name == "Melanie" & sex == "F" |
+  name == "Anna" & sex == "F"
+  ) \%>\%
+  group_by(name, year, sex) \%>\%
+  summarise(n = sum(n)) \%>\%
+  arrange(year)
 
-  # Representation ggplot
-  ggplot(data = famille, aes(x = annee, y = n, color = prenom))+
-    geom_line()+
-    scale_x_continuous( breaks = seq(1980, 2020, by = 5))
+  ggplot(data = family, aes(x = year, y = n, color = name))+
+  geom_line()+
+  scale_x_continuous( breaks = seq(1980, 2020, by = 5))
 }
 
 \dontrun{
@@ -54,10 +53,10 @@ entre 1980 et 2020.
 
   # Les 5 prenoms feminins les plus populaires en 2020
   prenoms \%>\%
-    filter(annee == 2020 & sexe == "F") \%>\%
-    select(annee, sexe, prenom, n) \%>\%
-    arrange(desc(n)) \%>\%
-    head(5)
+  filter(year == 2020 & sex == "F") \%>\%
+  select(year, sex, name, n) \%>\%
+  arrange(desc(n)) \%>\%
+  head(5)
 }
 }
 \keyword{datasets}

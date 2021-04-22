@@ -4,39 +4,39 @@ library(stringr)
 library(tidyr)
 library(devtools)
 
-gars <- read_csv("data-raw/gars1980-2020.csv", na = c("", "NA", 0), skip = 5)
-filles <- read_csv("data-raw/filles1980-2020.csv", na = c("", "NA", 0), skip = 5)
+boys <- read_csv("data-raw/gars1980-2020.csv", na = c("", "NA", 0), skip = 5)
+girls <- read_csv("data-raw/filles1980-2020.csv", na = c("", "NA", 0), skip = 5)
 
-prenoms_gars <- gars %>%
+names_boys <- boys %>%
   select(-Total) %>%
-  rename(prenom = `Prénom/Année`) %>%
-  filter(prenom != "Somme:") %>%
-  pivot_longer(-prenom, names_to = "annee", values_to = "n") %>%
-  mutate(sexe = "M") %>%
+  rename(name = `Prénom/Année`) %>%
+  filter(name != "Somme:") %>%
+  pivot_longer(-name, names_to = "year", values_to = "n") %>%
+  mutate(sex = "M") %>%
   mutate(
-    prenom = str_to_title(prenom),
+    name = str_to_title(name),
     n = as.integer(n),
-    annee = as.integer(annee)
+    year = as.integer(year)
   )
 
-prenoms_filles <- filles %>%
+names_girls <- girls %>%
   select(-Total) %>%
-  rename(prenom = `Prénom/Année`) %>%
-  filter(prenom != "Somme:") %>%
-  pivot_longer(-prenom, names_to = "annee", values_to = "n") %>%
-  mutate(sexe = "F") %>%
+  rename(name = `Prénom/Année`) %>%
+  filter(name != "Somme:") %>%
+  pivot_longer(-name, names_to = "year", values_to = "n") %>%
+  mutate(sex = "F") %>%
   mutate(
-    prenom = str_to_title(prenom),
+    name = str_to_title(name),
     n = as.integer(n),
-    annee = as.integer(annee)
+    year = as.integer(year)
   )
 
 prenoms <-
-  bind_rows(prenoms_gars, prenoms_filles) %>%
-  filter( !is.na(prenom), !is.na(annee), !is.na(n), !is.na(sexe)) %>%
-  select(annee, sexe, prenom, n) %>%
-  # group_by(annee, sexe) %>%
+  bind_rows(names_boys, names_girls) %>%
+  filter( !is.na(name), !is.na(year), !is.na(n), !is.na(sex)) %>%
+  select(year, sex, name, n) %>%
+  # group_by(year, sex) %>%
   # mutate(prop = n/sum(n)) %>%
-  arrange(annee, sexe, prenom)
+  arrange(year, sex, name)
 
 use_data(prenoms, overwrite = TRUE)
