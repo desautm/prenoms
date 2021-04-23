@@ -5,3 +5,6 @@
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTEs. 
 
+## Fix for resubmit
+* new version number from 0.0.9000 to 0.0.1
+* got rid of `This library contains`
