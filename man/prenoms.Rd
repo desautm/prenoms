@@ -26,7 +26,6 @@ A database containing the first names of babies born in Quebec
 between 1980 and 2020
 }
 \examples{
-\dontrun{
   library(dplyr)
   library(ggplot2)
   library(prenoms)
@@ -46,9 +45,7 @@ between 1980 and 2020
   ggplot(data = family, aes(x = year, y = n, color = name))+
   geom_line()+
   scale_x_continuous( breaks = seq(1980, 2020, by = 5))
-}
 
-\dontrun{
   library(dplyr)
 
   # Les 5 prenoms feminins les plus populaires en 2020
@@ -57,6 +54,5 @@ between 1980 and 2020
   select(year, sex, name, n) \%>\%
   arrange(desc(n)) \%>\%
   head(5)
-}
 }
 \keyword{datasets}
